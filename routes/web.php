@@ -19,30 +19,26 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-//admin
-Route::get('/add', 'AdminController@getadd');
-Route::post('/add', 'AdminController@add');
 
-//menu-bar
-Route::get('/lists', 'AdminController@getlists');
-Route::get('/hotel', 'AdminController@gethotel');
-Route::get('/customer', 'AdminController@getcustomer');
+Route::get('admin/add', 'AdminController@getadd');
+Route::post('admin/add', 'AdminController@add');
 
-Route::get('/addcus', 'AdminController@getaddcus');
-//Route::get('/addcus', 'AdminController@addcus');
-
-Route::get('/edit', 'AdminController@getedit');
-Route::post('/edit', 'AdminController@edit');
+Route::get('admin/lists', 'AdminController@getlists');
+Route::get('admin/hotel', 'AdminController@gethotel');
+Route::get('admin/customer', 'AdminController@getcustomer');
+//admin-middleware
+Route::get('/admin/edit', 'AdminController@getedit');
+Route::post('admin/edit', 'AdminController@edit');
 
 
 
-Route::get('/editstaff/{id}', 'AdminController@editstaff');
-Route::post('/editstaff/{id}', 'AdminController@updatestaff');
-Route::get('/deletestaff/{id}', 'AdminController@deletestaff');
+Route::get('admin/editstaff/{id}', 'AdminController@editstaff');
+Route::post('admin/editstaff/{id}', 'AdminController@updatestaff');
+Route::get('admin/deletestaff/{id}', 'AdminController@deletestaff');
 
-Route::get('/editroom/{id}', 'AdminController@editroom');
-Route::post('/editroom/{id}', 'AdminController@updateroom');
-Route::get('/deleteroom/{id}', 'AdminController@deleteroom');
+Route::get('admin/editroom/{id}', 'AdminController@editroom');
+Route::post('admin/editroom/{id}', 'AdminController@updateroom');
+Route::get('admin/deleteroom/{id}', 'AdminController@deleteroom');
 
 
 Route::get('/library', 'LibraryController@getindex');
@@ -51,3 +47,13 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::resource('admin','AdminController');
+
+
+//StaffController-middleware
+Route::get('/member/lists', 'StaffController@getlists');
+Route::get('/member/hotel', 'StaffController@gethotel');
+Route::get('/member/edit', 'StaffController@getedit');
+Route::post('/member/edit', 'StaffController@edit');
+Route::get('/member/editroom/{id}', 'StaffController@editroom');
+Route::post('/member/editroom/{id}', 'StaffController@updateroom');
+Route::get('/member/deleteroom/{id}', 'StaffController@deleteroom');

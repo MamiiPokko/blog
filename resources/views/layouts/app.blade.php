@@ -14,16 +14,16 @@
     <!-- <link href="{{URL('/css/app.css')}}" rel="stylesheet"> -->
 
     <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/vendor/icon-sets.css">
-    <link rel="stylesheet" href="assets/css/main.min.css">
+    <link rel="stylesheet" href="{{URL('assets/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{URL('assets/css/vendor/icon-sets.css')}}">
+    <link rel="stylesheet" href="{{URL('assets/css/main.min.css')}}">
     <!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
-    <link rel="stylesheet" href="assets/css/demo.css">
+    <link rel="stylesheet" href="{{URL('assets/css/demo.css')}}">
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
     <!-- ICONS -->
-    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{URL('assets/img/apple-icon.png')}}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{URL('assets/img/favicon.png')}}">
 
     <!-- Scripts -->
     <script>
@@ -38,22 +38,35 @@
         <!-- SIDEBAR -->
         <div class="sidebar">
             <div class="brand">
-                <a href="index.html"><img src="assets/img/logo.png" alt="Klorofil Logo" class="img-responsive logo"></a>
+                <a href="index.html"><img src="{{URL('assets/img/logo.png')}}" alt="Klorofil Logo" class="img-responsive logo"></a>
             </div>
             <div class="sidebar-scroll">
                 <nav>
                     <ul class="nav">
                         <li><a href="{{URL('/home')}}" class="active"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
+                         @if (Auth::guest())
+                         @elseif (Auth::user()->role == 'admin' )
                         <li>
                             <a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>Admin</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
                             <div id="subPages" class="collapse ">
                                 <ul class="nav">
-                                    <li><a href="{{URL('/lists')}}" class="">Staff list</a></li>
-                                    <li><a href="{{URL('/hotel')}}" class="">Room type</a></li>
-                                    <li><a href="{{URL('/owner')}}" class="">Owner</a></li>
+                                    <li><a href="{{URL('admin/lists')}}" class="">Staff list</a></li>
+                                    <li><a href="{{URL('admin/hotel')}}" class="">Room type</a></li>
+                                    <li><a href="{{URL('admin/customer')}}" class="">Customer</a></li>
                                 </ul>
                             </div>
                         </li>
+                        @elseif (Auth::user()->role == 'member' )
+                        <li>
+                            <a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>Member</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+                            <div id="subPages" class="collapse ">
+                                <ul class="nav">
+                                    <li><a href="{{URL('member/hotel')}}" class="">Room type</a></li>
+                                    <li><a href="{{URL('member/customer')}}" class="">Customer</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        @endif
                     </ul>
                 </nav>
             </div>
@@ -77,8 +90,8 @@
                     <div id="navbar-menu" class="navbar-collapse collapse">
                         <form class="navbar-form navbar-left hidden-xs">
                             <div class="input-group">
-                                <input type="text" value="" class="form-control" placeholder="Search dashboard...">
-                                <span class="input-group-btn"><button type="button" class="btn btn-primary">Go</button></span>
+                                
+                               
                             </div>
                         </form>
                         <ul class="nav navbar-nav navbar-right">
@@ -132,11 +145,13 @@
     <!-- <script src="{{URL('/js/app.js')}}"></script> -->
 
     <!-- Javascript -->
-    <script src="assets/js/jquery/jquery-2.1.0.min.js"></script>
-    <script src="assets/js/bootstrap/bootstrap.min.js"></script>
-    <script src="assets/js/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-    <script src="assets/js/plugins/jquery-easypiechart/jquery.easypiechart.min.js"></script>
-    <script src="assets/js/plugins/chartist/chartist.min.js"></script>
-    <script src="assets/js/klorofil.min.js"></script>
+    <script src="{{URL('assets/js/jquery/jquery-2.1.0.min.js')}}"></script>
+    <script src="{{URL('assets/js/bootstrap/bootstrap.min.js')}}"></script>
+    <script src="{{URL('assets/js/plugins/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
+    <script src="{{URL('assets/js/plugins/jquery-easypiechart/jquery.easypiechart.min.js')}}"></script>
+    <script src="{{URL('assets/js/plugins/chartist/chartist.min.js')}}"></script>
+    <script src="{{URL('assets/js/klorofil.min.js')}}"></script>
+
+
 </body>
 </html>

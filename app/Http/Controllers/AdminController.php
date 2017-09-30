@@ -99,10 +99,10 @@ class AdminController extends Controller
             $staff->address = $request->input('address');
             $staff->tel = $request->input('tel');
             $staff->save();
-            return back();   
+            return Redirect::to('admin/lists');   
         }
         else
-            return Redirect::to('/add')
+            return back()
                 ->withErrors($validator->messages()); 
 
     }
@@ -116,7 +116,7 @@ class AdminController extends Controller
     {
         $staff = Staff::All();
 
-        return view('admin.lists')->with('staff', $staff);;
+        return view('admin.lists')->with('staff', $staff);
     }
 
 
@@ -124,7 +124,7 @@ class AdminController extends Controller
     {
         $hotel = Hotel::All();
 
-        return view('admin.hotel')->with('hotel',$hotel);;
+        return view('admin.hotel')->with('hotel',$hotel);
     }
 
     public function getedit()
@@ -159,20 +159,18 @@ class AdminController extends Controller
             $hotel->rates = $request->input('rates');
             $hotel->descrip = $request->input('descrip');
             $hotel->save();
-            return back();
+            return Redirect::to('admin/hotel');
         }
         else
-            return Redirect::to('/edit')
+            return back()
                 ->withErrors($validator->messages());
     }
-
-
 
     public function getcustomer()
     {
         $customer = Customer::All();
 
-        return view('admin.customer')->with('customer' ,$customer);;
+        return view('admin.customer')->with('customer' ,$customer);
     }
 
     public function getaddcus()
@@ -187,7 +185,9 @@ class AdminController extends Controller
 
     public function index()
     {
-        return 'admin area';
+        $staff = Staff::All();
+
+        return view('admin.lists')->with('staff', $staff);
     }
 
 }

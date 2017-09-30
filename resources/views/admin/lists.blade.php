@@ -33,11 +33,11 @@
                         <td>{{$s->surname}}</td>
                         <td>{{$s->dob}}</td>
                         <td>
-                        <a href="{{URL('/editstaff')}}/{{$s->id}}">
+                        <a href="{{URL('admin/editstaff')}}/{{$s->id}}">
                           <button type="button" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</button>
                         </a><br>
-                        <!-- <button type="button" class="btn btn-danger" onclick="confirm_delete('{{ url('/deletestaff', $s->id) }}', 'Are you sure delete ?')"><i class="fa fa-window-close" aria-hidden="true"></i> Del</button> -->
-                        <a href="{{ url('/deletestaff', $s->id) }}" class="btn btn-danger"><i class="fa fa-window-close" aria-hidden="true"></i> Del</a>
+                        <button type="button" class="btn btn-danger" onclick="confirm_delete('{{ url('admin/deletestaff', $s->id) }}', 'Are you sure delete ?')"><i class="fa fa-window-close" aria-hidden="true"></i> Del</button>
+                        <!--a href="{{ url('admin/deletestaff', $s->id) }}" class="btn btn-danger"><i class="fa fa-window-close" aria-hidden="true"></i> Del</a-->
                         </td>
                       </tr>
                     @endforeach
@@ -48,30 +48,53 @@
                 </div>
               </div>
               <p class="demo-button">
-                <a href="{{URL('/add')}}"> <button type="button" class="btn btn-primary">Add</button>
+                <a href="{{URL('admin/add')}}"> <button type="button" class="btn btn-primary">Add</button>
               </p>
         </div>
       </div>
     </div>
 </div>
 
+
 <script type="text/javascript">
         function confirm_delete(url, message){
+          console.log(url)
           swal({
-            title: message,
-            text: "You will not be able to recover this imaginary file!",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Yes, delete it!",
-            closeOnConfirm: false
-          },
-          function(){
-            window.location.href = url;
-            swal("Deleted!", "Your imaginary file has been deleted.", "success");
-          });
+  title: 'Are you sure?',
+  text: "You won't be able to revert this!",
+  type: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Yes, delete it!',
+  cancelButtonText: 'No, cancel!',
+  confirmButtonClass: 'btn btn-success',
+  cancelButtonClass: 'btn btn-danger',
+  buttonsStyling: false
+}).then(function () {
+  swal(
+    'Deleted!',
+    'Your file has been deleted.',
+    'success'
+  )
+  window.location.href = url
+}, function (dismiss) {
+  // dismiss can be 'cancel', 'overlay',
+  // 'close', and 'timer'
+  if (dismiss === 'cancel') {
+    swal(
+      'Cancelled',
+      '',
+      'error'
+    )
+  }
+})
         }
 
 
 </script>
+
+    <!-- Include a polyfill for ES6 Promises (optional) for IE11 and Android browser -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 @endsection

@@ -34,7 +34,7 @@
                 </div>
               </div>
               <p class="demo-button">
-                <a href="{{URL('/addcus')}}"> <button type="button" class="btn btn-primary">Add</button>
+                <a href="{{URL('admin/addcus')}}"> <button type="button" class="btn btn-primary">Add</button>
               </p>
         </div>
       </div>

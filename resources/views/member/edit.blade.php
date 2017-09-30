@@ -1,6 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
+
+    @if ( count($errors) > 0 )
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
 <div class="panel">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">Add Room Type</h3>
@@ -23,29 +34,29 @@
                                 <label for="detail">Detail Room</label>
                                 <p>WiFi</p>
                                     <label class="fancy-radio">
-                                        <input name="wifi" value="yes" type="radio" @if( $hotel->wifi == "yes" ) checked @endif>
+                                        <input name="wifi" value="yes" type="radio">
                                         <span><i></i>yes</span>
                                     </label>
                                     <label class="fancy-radio">
-                                        <input name="wifi" value="no" type="radio" @if( $hotel->wifi == "no" ) checked @endif>
+                                        <input name="wifi" value="no" type="radio">
                                         <span><i></i>no</span>
                                     </label>
                                 <p>Parking</p>
 									<label class="fancy-radio">
-                                        <input name="parking" value="yes" type="radio" @if( $hotel->parking == "yes" ) checked @endif>
+                                        <input name="parking" value="yes" type="radio">
                                         <span><i></i>yes</span>
                                     </label>
                                     <label class="fancy-radio">
-                                        <input name="parking" value="no" type="radio" @if( $hotel->parking == "no" ) checked @endif>
+                                        <input name="parking" value="no" type="radio">
                                         <span><i></i>no</span>
                                     </label>
                                 <p>Air conditioner</p>
                                 <label class="fancy-radio">
-                                        <input name="air" value="yes" type="radio" @if( $hotel->air == "yes" ) checked @endif>
+                                        <input name="air" value="yes" type="radio">
                                         <span><i></i>yes</span>
                                     </label>
                                     <label class="fancy-radio">
-                                        <input name="air" value="no" type="radio" @if( $hotel->wifi == "no" ) checked @endif>
+                                        <input name="air" value="no" type="radio">
                                         <span><i></i>no</span>
                                     </label>
                                 <div class="form-group">

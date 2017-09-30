@@ -1,9 +1,6 @@
-<!DOCTYPE html>>
-<html>
-	<head>
-		<tiltle>คุณไม่มีสิทธิ์ใช้งานหน้านี้</tiltle>
+@extends('layouts.app')
 
-		<link rel="stylesheet" type="text/css" href="assets/css/main.min.css">
+@section('content')
 
 		<style>
 			html, body {
@@ -45,3 +42,5 @@
 		</div>
 	</body>
 </html>
+
+@endsection
