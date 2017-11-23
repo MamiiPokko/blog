@@ -12,8 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+
 
 Auth::routes();
 
@@ -26,6 +28,7 @@ Route::post('admin/add', 'AdminController@add');
 Route::get('admin/lists', 'AdminController@getlists');
 Route::get('admin/hotel', 'AdminController@gethotel');
 Route::get('admin/customer', 'AdminController@getcustomer');
+Route::get('admin/viewcus/', 'AdminController@getviewcus');
 //admin-middleware
 Route::get('/admin/edit', 'AdminController@getedit');
 Route::post('admin/edit', 'AdminController@edit');
@@ -35,7 +38,6 @@ Route::post('admin/edit', 'AdminController@edit');
 Route::get('admin/editstaff/{id}', 'AdminController@editstaff');
 Route::post('admin/editstaff/{id}', 'AdminController@updatestaff');
 Route::get('admin/deletestaff/{id}', 'AdminController@deletestaff');
-
 Route::get('admin/editroom/{id}', 'AdminController@editroom');
 Route::post('admin/editroom/{id}', 'AdminController@updateroom');
 Route::get('admin/deleteroom/{id}', 'AdminController@deleteroom');

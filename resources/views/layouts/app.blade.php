@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Management Hostel') }}</title>
 
     <!-- Styles -->
     <!-- <link href="{{URL('/css/app.css')}}" rel="stylesheet"> -->
@@ -43,7 +43,7 @@
             <div class="sidebar-scroll">
                 <nav>
                     <ul class="nav">
-                        <li><a href="{{URL('/home')}}" class="active"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
+                        <li><a href="{{URL('/home')}}" class="active"><i class="lnr lnr-home"></i> <span>Management</span></a></li>
                          @if (Auth::guest())
                          @elseif (Auth::user()->role == 'admin' )
                         <li>
@@ -103,10 +103,6 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" class="img-circle" alt="Avatar"> <span>{{ Auth::user()->name }}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="{{url('/admin')}}">สำหรับผู้ดูแลระบบ</a></li>
-                                    <li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
-                                    <li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
-                                    <li><a href="#"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
                                     <li><a href="{{ url('/logout') }}" 
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"><i class="lnr lnr-exit"></i> 

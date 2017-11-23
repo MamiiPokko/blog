@@ -119,7 +119,6 @@ class AdminController extends Controller
         return view('admin.lists')->with('staff', $staff);
     }
 
-
     public function gethotel()
     {
         $hotel = Hotel::All();
@@ -171,6 +170,13 @@ class AdminController extends Controller
         $customer = Customer::All();
 
         return view('admin.customer')->with('customer' ,$customer);
+    }
+
+    public function viewcus($id)
+    {
+        $customer = Customers::find($id);
+
+        return view('admin.viewcus', compact('customer'));
     }
 
     public function getaddcus()

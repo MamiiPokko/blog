@@ -18,16 +18,23 @@
                         <th>No.</th>
                         <th>Name</th>
                         <th>Surname</th>
-                        <th>Address</th>
-                        <th>E-mail</th>
-                        <th>Tel</th>
                         <th>view</th>
                       </tr>
                     </thead>
-                  <tbody>
-                    <tr>
-                    </tr>
-                  </tbody>          
+                    <tbody>
+                    @foreach($customer as $index => $m)
+                      <tr>
+                        <td>{{$index+1}}</td>
+                        <td>{{$m->name}}</td>
+                        <td>{{$m->surname}}</td>
+                        <td>
+                          <p class="demo-button">
+                            <a href="{{URL('admin/viewcus')}}"> <button type="button" class="btn btn-primary">VIEW</button>
+                          </p>
+                        </td>
+                      </tr>
+                    @endforeach
+                    </tbody>        
                   </table>
                 </div>
                 <div class="panel-footer">
