@@ -33,7 +33,7 @@ class AdminController extends Controller
         $staff->tel = $request->input('tel');
         $staff->save();
 
-        return redirect('lists');
+        return redirect('admin/lists');
     }
 
     public function deletestaff($id)
@@ -60,7 +60,7 @@ class AdminController extends Controller
         $hotel->rates = $request->input('rates');
         $hotel->descrip = $request->input('descrip');
         $hotel->save();
-        return redirect('hotel');
+        return redirect('admin/hotel');
     }
 
     public function deleteroom($id)
@@ -172,11 +172,24 @@ class AdminController extends Controller
         return view('admin.customer')->with('customer' ,$customer);
     }
 
-    public function viewcus($id)
+    public function getviewcus($id)
     {
-        $customer = Customers::find($id);
+        $customer = Customer::find($id);
 
         return view('admin.viewcus', compact('customer'));
+    }
+
+    public function updatecus(Request $request, $id)
+    {
+        $customers = Customer::find($id);
+        $customers->name = $request->input('name');
+        $customers->surname = $request->input('surname');
+        $customers->address = $request->input('address');
+        $customers->email = $request->input('email');
+        $customers->tel = $request->input('tel');
+        $customers->save();
+
+        return redirect('lists');
     }
 
     public function getaddcus()

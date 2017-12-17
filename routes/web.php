@@ -28,7 +28,7 @@ Route::post('admin/add', 'AdminController@add');
 Route::get('admin/lists', 'AdminController@getlists');
 Route::get('admin/hotel', 'AdminController@gethotel');
 Route::get('admin/customer', 'AdminController@getcustomer');
-Route::get('admin/viewcus/', 'AdminController@getviewcus');
+Route::get('admin/viewcus/{id}', 'AdminController@getviewcus');
 //admin-middleware
 Route::get('/admin/edit', 'AdminController@getedit');
 Route::post('admin/edit', 'AdminController@edit');

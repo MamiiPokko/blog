@@ -29,7 +29,7 @@
                         <td>{{$m->surname}}</td>
                         <td>
                           <p class="demo-button">
-                            <a href="{{URL('admin/viewcus')}}"> <button type="button" class="btn btn-primary">VIEW</button>
+                            <a href="{{URL('admin/viewcus')}}/{{$m->id}}"> <button type="button" class="btn btn-primary">VIEW</button>
                           </p>
                         </td>
                       </tr>
